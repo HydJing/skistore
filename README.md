@@ -19,3 +19,9 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - Shaping data(DTO)
 - Automapper
 - Serving static content from API
+
+#section 5
+- test controller for testing
+- add custom error/exception/validation handling
+- add swagger
+- use extension class to manage custom services/middleware
