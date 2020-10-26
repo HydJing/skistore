@@ -1,5 +1,6 @@
 using System.Linq;
 using API.Errors;
+using API.Extensions;
 using API.Helpers;
 using API.Middleware;
 using AutoMapper;
@@ -27,32 +28,16 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
-            services.Configure<ApiBehaviorOptions>(options => {
-                options.InvalidModelStateResponseFactory = ActionContext => 
-                {
-                    var errors = ActionContext.ModelState
-                        .Where(e => e.Value.Errors.Count > 0)
-                        .SelectMany(x => x.Value.Errors)
-                        .Select(x => x.ErrorMessage).ToArray();
-
-                    var errorResponse = new ApiValidationErrorResponse
-                    {
-                        Errors = errors
-                    };
-
-                    return new BadRequestObjectResult(errorResponse);
-                };
-            });
-
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "SkiStore API", Version = "v1"});
-            });
+            // move some custom services into extension class
+            services.AddApplicationServices();
+            // move some swagger services into extension class
+            services.AddSwaggerDocumentation();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,8 +59,8 @@ namespace API
 
             app.UseAuthorization();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => {c.SwaggerEndpoint("/swagger/v1/swagger.json", "SkiStore API v1");});
+            // refactor the swagger middlewares into one class
+            app.UseSwaggerDocumentation();
 
             app.UseEndpoints(endpoints =>
             {
