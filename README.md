@@ -25,3 +25,7 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - add custom error/exception/validation handling
 - add swagger
 - use extension class to manage custom services/middleware
+
+#section 6
+- add filters, pagination, search and sorting in a list using specification pattern
+
