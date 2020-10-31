@@ -29,3 +29,5 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 #section 6
 - add filters, pagination, search and sorting in a list using specification pattern
 
+#section 7
+- set up the Angular project with extensions
