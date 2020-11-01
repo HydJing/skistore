@@ -31,3 +31,8 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 
 #section 7
 - set up the Angular project with extensions
+
+#section 8
+- use http client module to receive data from API
+- understand basics of observables and Typescript
+- created nav bard with images
