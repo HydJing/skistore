@@ -36,3 +36,12 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - use http client module to receive data from API
 - understand basics of observables and Typescript
 - created nav bard with images
+
+#section 9
+- file and folder structure
+- Angular services(shop service - where call API and get data)
+- Building the UI for the shop
+- Pagination
+- Filtering, Sorting & Search
+- Input and Output properties
+- Shared components(pager, paging header)
