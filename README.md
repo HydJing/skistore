@@ -45,3 +45,9 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - Filtering, Sorting & Search
 - Input and Output properties
 - Shared components(pager, paging header)
+
+#section 10
+- Adding new feature modules
+- setting up routes
+- Nav links
+- Lazy loading
