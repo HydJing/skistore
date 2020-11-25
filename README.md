@@ -20,24 +20,24 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - Automapper
 - Serving static content from API
 
-#section 5
+# section 5
 - test controller for testing
 - add custom error/exception/validation handling
 - add swagger
 - use extension class to manage custom services/middleware
 
-#section 6
+# section 6
 - add filters, pagination, search and sorting in a list using specification pattern
 
-#section 7
+# section 7
 - set up the Angular project with extensions
 
-#section 8
+# section 8
 - use http client module to receive data from API
 - understand basics of observables and Typescript
 - created nav bard with images
 
-#section 9
+# section 9
 - file and folder structure
 - Angular services(shop service - where call API and get data)
 - Building the UI for the shop
@@ -46,8 +46,11 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - Input and Output properties
 - Shared components(pager, paging header)
 
-#section 10
+# section 10
 - Adding new feature modules
 - setting up routes
 - Nav links
 - Lazy loading
+
+# section 11
+- created custom error components and inceptor. try to handle the API errors. this might not used in real app, but it is helpful in demo 
