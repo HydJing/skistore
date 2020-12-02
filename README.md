@@ -54,3 +54,10 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 
 # section 11
 - created custom error components and inceptor. try to handle the API errors. this might not used in real app, but it is helpful in demo 
+
+# section 12
+- add section header
+- add breadcrumb
+- add loading spinner
+- add homepage slider
+
