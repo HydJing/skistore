@@ -61,3 +61,7 @@ Hi there, here is my new demo about building online store by using .Net and Angu
 - add loading spinner
 - add homepage slider
 
+# section 13
+- install the Redis on window
+- created the basket class, interface, repository and controller
+- Redis testing, 'redis-server' for starting the server, 'redis-cli' start the client, can try 'ping' if it is working. 'redis-cli keys *' check all the keys and get value using 'redis-cli get KEY_NAME'
