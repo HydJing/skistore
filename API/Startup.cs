@@ -47,7 +47,7 @@ namespace API
             // move some custom services into extension class
             services.AddApplicationServices();
 
-            services.AddIdentityServices();
+            services.AddIdentityServices(_config);
 
             // move some swagger services into extension class
             services.AddSwaggerDocumentation();
@@ -81,6 +81,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             // refactor the swagger middlewares into one class
