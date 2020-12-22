@@ -70,3 +70,9 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - created basket(like cart) and added functions and service make it working(add, increse/decrease qty)
  - add order summary componenet
  - created checkout component
+
+ # section 15
+ - Set up Identity package
+ - create account ctroller for user realted actions(login, register, get customer address etc)
+ - Update the way token use
+ - extends the user manager methods
