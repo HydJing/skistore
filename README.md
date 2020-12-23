@@ -76,3 +76,7 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - create account ctroller for user realted actions(login, register, get customer address etc)
  - Update the way token use
  - extends the user manager methods
+
+  # section 16
+ - Validation data for email address and basket
+ - data annotation and DTO for basket
