@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errors: string;
 
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
           Validators.pattern("^[\\w-\\.+@([\\w-]+\\.)+[\\w-]{2,4}$"),
         ],
         [this.validateEmailNotTaken()]
+
       ],
       password: [null, [Validators.required]],
     });
