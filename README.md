@@ -80,3 +80,12 @@ Hi there, here is my new demo about building online store by using .Net and Angu
   # section 16
  - Validation data for email address and basket
  - data annotation and DTO for basket
+
+  # section 17
+ - adding account feature
+ - use Form in Angular
+ - Reactive forms
+ - Reusuable form components
+ - Client side validation
+ - Async validation
+ 
