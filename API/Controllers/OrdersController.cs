@@ -41,7 +41,9 @@ namespace API.Controllers
 
             var orders = await _orderService.GetOrdersForUserAsync(email);
 
-            return Ok(_mapper.Map<IReadOnlyList<Order>, IReadOnlyList<OrderToReturnDto>>(orders));
+            var ordersToReturn = _mapper.Map<IReadOnlyList<Order>, IReadOnlyList<OrderToReturnDto>>(orders);
+
+            return Ok(ordersToReturn);
             
         }
 
@@ -57,10 +59,10 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404));
             }
 
-            return Ok(_mapper.Map<Order, OrderToReturnDto>(order));
+            return _mapper.Map<Order, OrderToReturnDto>(order);
         }
 
-        [HttpGet("/deliveryMethods")]
+        [HttpGet("deliveryMethods")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
             return Ok(await _orderService.GetDeliveryMethodsAsync());
