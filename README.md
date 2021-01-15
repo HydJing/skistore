@@ -89,3 +89,8 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - Client side validation
  - Async validation
  
+   # section 18
+ - adding order entity
+ - aggrgate entities(order item, order status, delivery methods etc)
+ - owned entities
+ - Unit of work pattern
