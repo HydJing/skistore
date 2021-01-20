@@ -2,20 +2,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="border-0 bg-light" scope="col">
+        <th class="border-0" scope="col" [class.bg-light]="isBasket">
           <div class="p-2 px-3 text-uppercase">Product</div>
         </th>
-        <th class="border-0 bg-light" scope="col">
+        <th class="border-0" scope="col" [class.bg-light]="isBasket">
           <div class="p-2 text-uppercase">Price</div>
         </th>
-        <th class="border-0 bg-light" scope="col">
+        <th class="border-0" scope="col" [class.bg-light]="isBasket">
           <div class="p-2 text-uppercase">Quantity</div>
         </th>
-        <th class="border-0 bg-light" scope="col">
+        <th class="border-0" scope="col" [class.bg-light]="isBasket">
           <div class="p-2 text-uppercase">Total</div>
         </th>
-        <th class="border-0 bg-light" scope="col">
-          <div class="p-2 text-uppercase">Remove</div>
+        <th *ngIf="isBasket" class="border-0 bg-light" scope="col">
+          <div class="py-2 text-uppercase">Remove</div>
         </th>
       </tr>
     </thead>
@@ -45,8 +45,12 @@
           <strong>{{ item.price | currency }}</strong>
         </td>
         <td class="align-middle">
-          <div class="d-flex align-items-center">
+          <div
+            class="d-flex align-items-center"
+            [class.justify-content-center]="!isBasket"
+          >
             <i
+              *ngIf="isBasket"
               (click)="decrementItemQuantity(item)"
               class="fa fa-minus-circle text-warning"
               style="cursor: pointer; font-size: 2em"
@@ -55,6 +59,7 @@
               item.quantity
             }}</span>
             <i
+              *ngIf="isBasket"
               (click)="incrementItemQuantity(item)"
               class="fa fa-plus-circle text-warning"
               style="cursor: pointer; font-size: 2em"
@@ -65,6 +70,7 @@
             <td class="align-middle text-center">
               <a class="text-danger">
                 <i
+                  *ngIf="isBasket"
                   (click)="removeBasketItem(item)"
                   class="fa fa-trash"
                   style="font-size: 2em"
