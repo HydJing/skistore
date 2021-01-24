@@ -71,17 +71,17 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - add order summary componenet
  - created checkout component
 
- # section 15
+# section 15
  - Set up Identity package
  - create account ctroller for user realted actions(login, register, get customer address etc)
  - Update the way token use
  - extends the user manager methods
 
-  # section 16
+# section 16
  - Validation data for email address and basket
  - data annotation and DTO for basket
 
-  # section 17
+# section 17
  - adding account feature
  - use Form in Angular
  - Reactive forms
@@ -89,8 +89,16 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - Client side validation
  - Async validation
  
-   # section 18
+# section 18
  - adding order entity
  - aggrgate entities(order item, order status, delivery methods etc)
  - owned entities
  - Unit of work pattern
+
+# section 19
+ - Implementing the checkout
+ - Collecting info from user
+ - Multi-Step Form
+ - Using HttpInterceptor to send JWT token
+ - Forms - updating the form with data from API
+ 
