@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BasketService } from 'src/app/basket/basket.service';
-import { IBasket } from 'src/app/shared/model/basket';
+import { Component, OnInit } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
+import { BasketService } from "src/app/basket/basket.service";
+import { IBasket } from "src/app/shared/model/basket";
 
 @Component({
-  selector: 'app-checkout-review',
-  templateUrl: './checkout-review.component.html',
-  styleUrls: ['./checkout-review.component.scss']
+  selector: "app-checkout-review",
+  templateUrl: "./checkout-review.component.html",
+  styleUrls: ["./checkout-review.component.scss"],
 })
 export class CheckoutReviewComponent implements OnInit {
   basket$: Observable<IBasket>;
 
-  constructor(private BasketService: BasketService) { }
+  constructor(
+    private BasketService: BasketService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.basket$ = this.BasketService.basket$;
   }
 
+  createPaymentIntent() {
+    return this.BasketService.createPaymentIntent().subscribe(
+      (response: any) => {
+        this.toastr.success("Payment intent created");
+      },
+      (error) => {
+        console.log(error);
+        this.toastr.error(error.message);
+      }
+    );
+  }
 }
