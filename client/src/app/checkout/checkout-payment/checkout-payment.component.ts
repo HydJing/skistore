@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { NavigationExtras, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
@@ -7,13 +7,23 @@ import { IBasket } from "src/app/shared/model/basket";
 import { IOrder } from "src/app/shared/model/order";
 import { CheckoutService } from "../checkout.service";
 
+declare var Stripe;
+
 @Component({
   selector: "app-checkout-payment",
   templateUrl: "./checkout-payment.component.html",
   styleUrls: ["./checkout-payment.component.scss"],
 })
-export class CheckoutPaymentComponent implements OnInit {
+export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
   @Input() checkoutForm: FormGroup;
+  @ViewChild('cardNumber', {static: true}) cardNumberElement: ElementRef;
+  @ViewChild('cardExpiry', {static: true}) cardExpiryElement: ElementRef;
+  @ViewChild('cardCvc', {static: true}) cardCvcElement: ElementRef;
+  stripe: any;
+  cardNumber: any;
+  cardExpiry: any;
+  cardCvc: any;
+  cardError: any;
 
   constructor(
     private BasketService: BasketService,
@@ -22,7 +32,25 @@ export class CheckoutPaymentComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngAfterViewInit() {
+    this.stripe = Stripe('pk_test_TGfOEV3VbCGIwyirYYX9ZYlL');
+    const elements = this.stripe.elements();
+
+    this.cardNumber = elements.create('cardNumber');
+    this.cardNumber.mount(this.cardNumberElement.nativeElement);
+
+    this.cardExpiry = elements.create('cardExpiry');
+    this.cardExpiry.mount(this.cardExpiryElement.nativeElement);
+
+    this.cardCvc = elements.create('cardCvc');
+    this.cardCvc.mount(this.cardCvcElement.nativeElement);
+  }
+
+  ngOnDestroy() {
+    this.cardNumber.destroy();
+    this.cardExpiry.destroy();
+    this.cardCvc.destroy();
+  }
 
   submitOrder() {
     const basket = this.BasketService.getCurrentBasketValue();
