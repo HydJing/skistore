@@ -15,7 +15,8 @@ namespace API.Controllers
     public class PaymentsController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
-        private const string WhSecret = "";
+        // UPDATE THE KEY BY RUN CMD STIPE COMMAND TO RENEW THE KEY
+        private const string WhSecret = "whsect_123";
         private readonly ILogger<IPaymentService> _logger;
         public PaymentsController(IPaymentService paymentService, ILogger<IPaymentService> logger)
         {
