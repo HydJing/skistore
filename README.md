@@ -102,3 +102,6 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  - Using HttpInterceptor to send JWT token
  - Forms - updating the form with data from API
  
+ # section 21
+ - Implemented the Stripe as third party payment in checkout
+ 
