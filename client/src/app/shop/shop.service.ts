@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { IBrand } from "../shared/model/brand";
-import { IPagination } from "../shared/model/pagination";
+import { IPagination, Pagination } from "../shared/model/pagination";
 import { IType } from "../shared/model/productType";
 import { map } from "rxjs/operators";
 import { ShopParams } from "../shared/shopParams";
@@ -16,26 +16,28 @@ export class ShopService {
   products: IProduct[] = [];
   brands: IBrand[] = [];
   types: IType[] = [];
+  pagination = new Pagination();
+  shopParams = new ShopParams();
 
   constructor(private http: HttpClient) {}
 
-  getProducts(shopParams: ShopParams) {
+  getProducts() {
     let params = new HttpParams();
 
-    if (shopParams.brandId !== 0) {
-      params.append("brandId", shopParams.brandId.toString());
+    if (this.shopParams.brandId !== 0) {
+      params.append("brandId", this.shopParams.brandId.toString());
     }
 
-    if (shopParams.typeId !== 0) {
-      params.append("typeId", shopParams.typeId.toString());
+    if (this.shopParams.typeId !== 0) {
+      params.append("typeId", this.shopParams.typeId.toString());
     }
 
-    params.append("sort", shopParams.sort);
-    params.append("pageIndex", shopParams.pageNumber.toString());
-    params.append("pageIndex", shopParams.pageSize.toString());
+    params.append("sort", this.shopParams.sort);
+    params.append("pageIndex", this.shopParams.pageNumber.toString());
+    params.append("pageIndex", this.shopParams.pageSize.toString());
 
-    if (shopParams.search) {
-      params = params.append("search", shopParams.search);
+    if (this.shopParams.search) {
+      params = params.append("search", this.shopParams.search);
     }
 
     return this.http
@@ -45,10 +47,19 @@ export class ShopService {
       })
       .pipe(
         map((response) => {
-          this.products = response.body.data;
-          return response.body;
+          this.products = [...this.products, ...response.body.data];
+          this.pagination = response.body;
+          return this.pagination;
         })
       );
+  }
+
+  setShopParams(params: ShopParams) {
+    this.shopParams = params;
+  }
+
+  getShopParams() {
+    return this.shopParams;
   }
 
   getProduct(id: number) {
@@ -75,7 +86,7 @@ export class ShopService {
 
   getTypes() {
     if (this.types.length > 0) {
-      return this.types;
+      return of(this.types);
     }
     return this.http.get<IType[]>(this.baseUrl + "products/types").pipe(
       map((response) => {
