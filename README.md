@@ -105,3 +105,6 @@ Hi there, here is my new demo about building online store by using .Net and Angu
  # section 21
  - Implemented the Stripe as third party payment in checkout
  
+  # section 22
+ - API performance
+ - Client Performance
