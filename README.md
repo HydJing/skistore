@@ -108,3 +108,37 @@ Hi there, here is my new demo about building online store by using .Net and Angu
   # section 22
  - API performance
  - Client Performance
+
+  # section 23
+Finally we finish the tutorial! YAY
+sum up the tech we used:
+API:
+ - dotnet CLI
+ - EF migrations
+ - Stripe
+ - redis
+ - Caching
+ - Specifications
+ - Generic Repositry
+ - ContextBoundaries
+ - Unit of Work
+ - AutoMapper
+ - Entity
+
+Frontend:
+Angualr
+- Auth
+- Routing
+- Stripe
+- Lazy Loading
+- Caching
+- Observables
+- Services
+- Error Handling
+- Aync pip
+- Typescript
+
+What we can do next:
+1. inventory system
+2. Email serivece
+3. Product review system
